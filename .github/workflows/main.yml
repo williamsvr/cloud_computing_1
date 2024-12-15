@@ -100,14 +100,13 @@ jobs:
       - name: Deploy Docker image to Azure Web App
         run: |
           az webapp config container set \
-            --name CPI-Web-App \
-            --resource-group Cloud_cpi \
+            --name CC-Web-App \
+            --resource-group cc_rg \
             --docker-custom-image-name ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest \
             --docker-registry-server-url https://ghcr.io
 
       - name: Restart Azure Web App
         run: |
           az webapp restart \
-            --name CPI-Web-App \
-            --resource-group Cloud_cpi
-
+            --name CC-Web-App \
+            --resource-group cc_rg
