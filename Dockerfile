@@ -1,16 +1,16 @@
-# Base de données PostgreSQL
-DATABASE_HOST=cc-postgresql.database.azure.com
-DATABASE_PORT=5432
-DATABASE_NAME=db_name
-DATABASE_USER=admin_username
-DATABASE_PASSWORD=admin_password
+FROM python:3.12-slim-bookworm
 
-# Azure Blob Storage
-STORAGE_ACCOUNT_URL=https://cc-blob-storage.blob.core.windows.net
-STORAGE_CONTAINER_NAME=blob_storage_name
+LABEL org.opencontainers.image.source="https://github.com/fhuitelec/junia-isen-examples-api"
 
-# Docker Registry
-DOCKER_REGISTRY_URL=https://ghcr.io
-DOCKER_IMAGE=docker_image
-DOCKER_REGISTRY_USERNAME=docker_registry_username
-DOCKER_REGISTRY_PASSWORD=docker_registry_password
+COPY --from=ghcr.io/astral-sh/uv:0.4 /uv /bin/uv
+
+WORKDIR /app
+ADD pyproject.toml uv.lock .python-version /app/
+RUN uv sync --frozen
+
+ADD examples/examples.py /app/examples/examples.py
+
+EXPOSE 80
+
+ENTRYPOINT ["uv", "run", "newrelic-admin", "run-program"]
+CMD ["fastapi", "dev", "app/main.py", "--host", "0.0.0.0", "--port", "80"]
