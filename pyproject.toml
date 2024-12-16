@@ -1,7 +1,7 @@
 [project]
 name = "examples-api"
 version = "1.0.0"
-description = "Simple API that returns example records from a database"
+description = "Simple API qui donne un exemple depuis la base de donnée."
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [

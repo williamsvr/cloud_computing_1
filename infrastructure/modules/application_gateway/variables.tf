@@ -1,20 +1,20 @@
 variable "rg_name" {
-  description = "The name of the resource group in Azure"
+  description = "Nom du ressource group dans Azure"
   type        = string
 }
 
 variable "physical_loc" {
-  description = "Physical location of the Azure resources"
+  description = "Emplacement physique des ressources Azure"
   type        = string
 }
 
 variable "gateway_name" {
-  description = "Name of the gateway"
+  description = "Nom du gateway"
   type        = string
 }
 
 variable "subnet_id" {
-  description = "ID of the subnet wher the gateway is deployed"
+  description = "ID du subnet où le gateway est déployé"
   type        = string
 }
 

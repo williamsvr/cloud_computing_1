@@ -1,4 +1,4 @@
-# Creates a public IP address for the application gateway
+# Crée une adresse IP publique pour la application gateway
 resource "azurerm_public_ip" "public_ip" {
   name                = "public_ip"
   location            = var.physical_loc
@@ -6,7 +6,7 @@ resource "azurerm_public_ip" "public_ip" {
   allocation_method   = "Static"
 }
 
-# Sets locals variables for the module
+# Définie les variables locales pour le module
 locals {
   back_ip_config_name     = "${var.gateway_name}-back-ip-config"
   front_ip_config_name    = "${var.gateway_name}-front-ip-config"
@@ -17,7 +17,7 @@ locals {
   routing_rule_name       = "${var.gateway_name}-routing-rule"
 }
 
-# Main resource of the application gateway creation process
+# Ressource principale pour le processus de création du gateway de l'application
 resource "azurerm_application_gateway" "app_gateway" {
   name                = var.gateway_name
   location            = var.physical_loc

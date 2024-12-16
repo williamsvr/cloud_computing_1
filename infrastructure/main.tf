@@ -22,7 +22,7 @@ module "resource_group" {
   physical_loc = var.physical_loc
 }
 
-# Creates a VNet and defines subnets.
+# Créé un VNet et definie les subnets.
 
 module "vnet" {
   source             = "./modules/vnet"
@@ -35,7 +35,7 @@ module "vnet" {
   depends_on = [module.resource_group]
 }
 
-# Creates a PostgreSQL database server and database.
+# Crée une PostgreSQL database server et une database.
 
 module "postgresql" {
   source                 = "./modules/postgreSQL"
@@ -54,7 +54,7 @@ module "postgresql" {
   depends_on = [module.vnet]
 }
 
-# Creates a Blob Storage account and container.
+# Crée Blob Storage account et un container.
 
 module "blob_storage" {
   source            = "./modules/blob_storage"
@@ -98,7 +98,7 @@ module "app_service" {
   depends_on = [module.vnet, module.postgresql]
 }
 
-# Creates an Application Gateway and connects it to the Web App.
+# Crée un Application Gateway et le connecte à l'app Web.
 
 module "app_gateway" {
   source           = "./modules/application_gateway"

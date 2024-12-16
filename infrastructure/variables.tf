@@ -94,7 +94,7 @@ variable "subnets" {
 }
 
 ## PostgreSQL
-# Variables related to the PostgreSQL server, database name, and admin credentials.
+# Variables en rapport avec le PostgreSQL server, nom de la database, et les admin credentials.
 
 variable "postgresql_server_name" {
   description = "Nom donné au serveur postgresql"
@@ -138,7 +138,7 @@ variable "db_version" {
 }
 
 ## Application Service
-# Defines the application service plan, web app, and Docker container configuration.
+# Definie le application service plan, web app, et la configuration du container Docker.
 
 variable "service_plan_name" {
   description = "Name of the service plan"
